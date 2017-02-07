@@ -1,0 +1,215 @@
+/**
+ * Defines global less variables in the project.
+ **/
+@default-font-color:#333;
+@qunar-blue:#1ba8ba;
+@qunar-dark-blue:#20889a;
+@grey:#aaa;
+@red:#FD471F;
+@light-grey:#ccc;
+@dark-grey:#888;
+@border-grey:#c7ced4;
+@border:1px solid @border-grey;
+
+.display-flex{
+    display: flex;
+    display: -webkit-flex;
+};
+.flex-grow(@number){
+    flex-grow:@number;
+    -webkit-flex-grow:@number;
+}
+.border-radius(@number){
+    border-radius: @number;
+    -webkit-border-radius:@number;
+}
+.rotate(@number){
+    transform: rotate(@number);
+    -webkit-transform: rotate(@number);
+}
+.transform(@numberX,@numberY){
+    transform: translate(@numberX,@numberY);
+    -webkit-transform: translate(@numberX,@numberY);
+}
+.animation(@name,@duration,@iteration,@timing){
+    animation: @name @duration @iteration @timing;
+    -webkit-animation: @name @duration @iteration @timing;
+}
+// display
+.display-flex() {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+}
+// flex
+.flex(@value: 1) {
+    flex: @value;
+    -webkit-box-flex: @value;
+    -webkit-flex: @value;
+}
+
+// order
+.order(@value: 1) {
+    order: @value;
+    -webkit-box-ordinal-group: @value;
+    -webkit-border: @value;
+}
+
+// flex-direction
+.flex-direction (@direction) when (@direction = row) {
+    flex-direction: row;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+}
+.flex-direction (@direction) when (@direction = row-reverse) {
+    flex-direction: row-reverse;
+    -webkit-box-pack: end;
+    -webkit-box-orient: reverse;
+    -webkit-flex-direction: row-reverse;
+}
+.flex-direction (@direction) when (@direction = column) {
+    flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+}
+.flex-direction (@direction) when (@direction = column-reverse) {
+    flex-direction: column-reverse;
+    -webkit-box-pack: end;
+    -webkit-box-orient: reverse;
+    -webkit-flex-direction: column-reverse;
+}
+
+// justify-content
+.justify-content (@value) when (@value = flex-start) {
+    justify-content: flex-start;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+}
+.justify-content (@value) when (@value = center) {
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+}
+.justify-content (@value) when (@value = flex-end) {
+    justify-content: flex-end;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+}
+.justify-content (@value) when (@value = space-between) {
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+}
+
+// align-items
+.align-items (@value) when (@value = flex-start) {
+    align-items: flex-start;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+}
+.align-items (@value) when (@value = center) {
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+}
+.align-items (@value) when (@value = flex-end) {
+    align-items: flex-end;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+}
+.align-items (@value) when (@value = baseline) {
+    align-items: baseline;
+    -webkit-box-align: baseline;
+    -webkit-align-items: baseline;
+}
+.align-items (@value) when (@value = stretch) {
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+}
+
+//flex-wrap
+.flex-wrap (@value) when (@value = nowrap) {
+    flex-wrap: nowrap;
+    -webkit-box-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+}
+.flex-wrap (@value) when (@value = wrap) {
+    flex-wrap: wrap;
+    -webkit-box-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+.flex-wrap (@value) when (@value = wrap-reverse) {
+    flex-wrap: wrap-reverse;
+    -webkit-box-wrap: wrap-reverse;
+    -webkit-flex-wrap: wrap-reverse;
+}
+
+//flex-shrink
+.flex-shrink(@value : 1){
+  flex-shrink : @value;
+  -webkit-flex-shrink : @value;
+}
+
+.px2px(@name, @px){
+    @{name}: round(@px / 2) * 1px;
+    [data-dpr="2"] & {
+        @{name}: @px * 1px;
+    }
+    // for mx3
+    [data-dpr="2.5"] & {
+        @{name}: round(@px * 2.5 / 2) * 1px;
+    }
+    // for 小米note
+    [data-dpr="2.75"] & {
+        @{name}: round(@px * 2.75 / 2) * 1px;
+    }
+    [data-dpr="3"] & {
+        @{name}: round(@px / 2 * 3) * 1px
+    }
+    // for 三星note4
+    [data-dpr="4"] & {
+        @{name}: @px * 2px;
+    }
+}
+.px2rem-75(@name, @px){
+    //针对于iphone6的基准稿，它的基准值为75
+    /*
+     *  基准稿为750时
+     *  750px / 10 = 75px
+     *  当基准稿尺寸不同时，可按照以上公式得出基准值
+     */
+    @{name}: @px / 75 * 1rem;
+}
+.px2rem-75-mp(@name, @pxt, @pxr, @pxb, @pxl){
+    //针对于iphone6的基准稿，它的基准值为75
+    /*
+     *  针对margin padding计算
+     */
+    @{name}: @pxt / 75 * 1rem @pxr / 75 * 1rem @pxb / 75 * 1rem @pxl / 75 * 1rem;
+}
+.px2rem-64(@name, @px){
+    //针对于iphone5的基准稿，它的基准值为64
+    /*
+     *  基准稿为640时
+     *  640px / 10 = 64px
+     *  当基准稿尺寸不同时，可按照以上公式得出基准值
+     */
+    @{name}: @px / 64 * 1rem;
+}
+.half-border(@desc){
+  position: relative;
+  &:after{
+    content: "";
+    width:200%;
+    height: 200%;
+    @desc();
+    display:block;
+    position:absolute;
+    .scale(0.5,0.5);
+    z-index:1;
+    .origin(0,0);
+  }
+}
